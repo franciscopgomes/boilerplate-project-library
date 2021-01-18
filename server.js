@@ -3,8 +3,8 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
-require('./db-connect');
 require('dotenv').config();
+require('./db-connect');
 
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
