@@ -89,15 +89,15 @@ module.exports = function (app) {
     
     .delete(function(req, res){
       let bookid = req.params.id;
-      if(!bookid) {res.send("no book exists");
+      if(!bookid) {res.json("no book exists");
                   return;}
-      BOOK.findByIdAndDelete(bookid, (err, res) => {
-        if(err) { res.send("no book exists");
-                return; }
-        res.send("delete successful")
-      })
+      const fetchBook = BOOK.findByIdAndDelete(bookid, (err, book) => {
+        if(err || !book) {res.send("no book exists");
+        return;}
+        res.send("delete successful");
+      });
+      });
 
       //if successful response will be 'delete successful'
-    });
   
 };
